@@ -3,7 +3,7 @@ import JobPostCard from "./JobPostCard";
 import { FakePosts } from "../../../Fake_job_posts";
 const JobPost = () => {
   const [filteredJobs, setFilteredJobs] = useState([]);
-  console.log(FakePosts);
+  // console.log(FakePosts);
 
   const handleJobFilter = (selectedJob) => {
     console.log("filter job", selectedJob);

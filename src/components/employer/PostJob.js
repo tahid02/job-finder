@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
-const PostJob = () => {
+const PostJob = ({ email, company }) => {
   const [show, setShow] = useState(false);
   const {
     register,
@@ -16,16 +17,20 @@ const PostJob = () => {
       job_post_status: "pending",
     };
     console.log(job_post);
-    uploadPost();
+    uploadPost(job_post);
   };
 
-  const uploadPost = () => {};
-  // const employee = (e) => {
-  //   console.log(e.target.value);
-  //   if (e.target.value === "Internship") {
-  //     setShow(true);
-  //   }
-  // };
+  const uploadPost = (job_post) => {
+    axios
+      .post("http://localhost:5000/addJobPost", job_post)
+      .then((res) => {
+        console.log("post job response", res.data);
+      })
+      .catch((err) => {
+        console.log("post job", err);
+      });
+  };
+
   return (
     <div>
       <div>post job here</div>
@@ -40,7 +45,7 @@ const PostJob = () => {
 
         <input
           {...register("company", { required: true })}
-          placeholder="Job Title"
+          placeholder={company}
         />
         {errors.company && (
           <span className="error">company name is required</span>
@@ -58,15 +63,9 @@ const PostJob = () => {
         )}
         <input
           type="email"
-          {...register("email", {
-            required: true,
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: "invalid email address",
-            },
-          })}
+          {...register("email", { required: true })}
+          placeholder={email}
         />
-        {/* {errors.email && errors.email.message} */}
         {errors.email && <span className="error">email is required</span>}
 
         <input

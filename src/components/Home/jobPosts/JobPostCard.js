@@ -1,7 +1,7 @@
 import React from "react";
 
 const JobPostCard = (props) => {
-  console.log("props", props);
+  // console.log("props", props);
   const { company, date_posted, email, position, experience_level } = props;
   return (
     <div style={{ backgroundColor: "yellow", margin: "10px" }}>
