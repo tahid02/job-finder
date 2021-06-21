@@ -1,4 +1,4 @@
-// import logo from './logo.svg';
+import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/shared/navbar/Navbar";
 import Home from "./components/Home/Home";
@@ -15,7 +15,7 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState(false);
   const [allJobPost, setAllJobPost] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/allPostedJobs`)
+    fetch(`https://frozen-shelf-53269.herokuapp.com/allPostedJobs`)
       .then((res) => res.json())
       .then((data) => {
         console.log("all psted job data ", data);
@@ -24,7 +24,7 @@ function App() {
   }, []);
   return (
     <UserContext.Provider value={{ allJobPost, loggedInUser, setLoggedInUser }}>
-      <div className="App"></div>
+      <div className="App">this is home section</div>
       <Router>
         <Navbar />
         <Switch>

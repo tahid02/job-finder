@@ -5,7 +5,9 @@ const JobSeeker = () => {
   const { loggedInUser } = useContext(UserContext);
   const [appliedJob, setAppliedJob] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/jobSeekerApplied?email=${loggedInUser.email}`)
+    fetch(
+      `https://frozen-shelf-53269.herokuapp.com/jobSeekerApplied?email=${loggedInUser.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log("user rented data ", data);
@@ -20,8 +22,8 @@ const JobSeeker = () => {
         appliedJob.map((applied) => {
           return (
             <div>
-              {applied.company}
-              {applied.job_title}
+              <p>company:{applied.company}</p>
+              <p>job title: {applied.job_title}</p>
             </div>
           );
         })}

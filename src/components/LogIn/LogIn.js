@@ -112,7 +112,10 @@ const LogIn = () => {
 
   const postUserInfo = (userInformation) => {
     axios
-      .post("http://localhost:5000/userInfo", userInformation)
+      .post(
+        "https://frozen-shelf-53269.herokuapp.com/userInfo",
+        userInformation
+      )
       .then((res) => {
         console.log("employerInfoWithEmail", res);
       })

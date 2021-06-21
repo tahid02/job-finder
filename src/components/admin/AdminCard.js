@@ -7,11 +7,14 @@ const AdminCard = (props) => {
     console.log(jobStatus);
     setStatus(jobStatus);
 
-    fetch(`http://localhost:5000/statusUpdate/${props.post._id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ jobStatus }),
-    })
+    fetch(
+      `https://frozen-shelf-53269.herokuapp.com/statusUpdate/${props.post._id}`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ jobStatus }),
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         console.log(result);

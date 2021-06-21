@@ -7,7 +7,7 @@ const JobPostCard = ({ post }) => {
   const { company, experience_level, date_posted, email, position } = post;
   const handleJobApply = () => {
     axios
-      .post("http://localhost:5000/addToApplied", {
+      .post("https://frozen-shelf-53269.herokuapp.com/addToApplied", {
         ...post,
         jobSeekerEmail: loggedInUser.email,
       })
@@ -23,7 +23,7 @@ const JobPostCard = ({ post }) => {
       <p>{date_posted}</p>
       <p>{email}</p>
       <p>{position}</p>
-      <Link to="/login">
+      <Link to="/user/profile">
         <button onClick={() => handleJobApply()}>Apply</button>
       </Link>
     </div>

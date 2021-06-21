@@ -22,7 +22,7 @@ const PostJob = ({ email, company }) => {
 
   const uploadPost = (job_post) => {
     axios
-      .post("http://localhost:5000/addJobPost", job_post)
+      .post("https://frozen-shelf-53269.herokuapp.com/addJobPost", job_post)
       .then((res) => {
         console.log("post job response", res.data);
       })

@@ -5,7 +5,9 @@ const PostedJob = (props) => {
   const email = props.email;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/employerPost?email=${email}`)
+    fetch(
+      `https://frozen-shelf-53269.herokuapp.com/employerPost?email=${email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log("user rented data ", data);
@@ -15,12 +17,17 @@ const PostedJob = (props) => {
   }, []);
   return (
     <div>
-      hello all from employer posted job
-      {/* {
-                employerPosts.map( post =>{
-                    return 
-                })
-            } */}
+      employer posted job
+      {employerPosts.map((post) => {
+        return (
+          <div>
+            <p>{post.job_title}</p>
+            <p>{post.job_type}</p>
+            <p>{post.experience_level}</p>
+            <p>{post.status}</p>
+          </div>
+        );
+      })}
     </div>
   );
 };

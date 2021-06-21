@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import JobPostCard from "./JobPostCard";
 import { userContext } from "../../../App";
+
 const JobPost = () => {
   const [filteredJobs, setFilteredJobs] = useState([]);
   const { allJobPost } = useContext(userContext);
