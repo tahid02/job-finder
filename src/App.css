@@ -1,7 +1,9 @@
 .App {
   text-align: center;
 }
-
+.error {
+  color: #ff0000;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
