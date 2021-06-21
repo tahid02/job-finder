@@ -2,6 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { userContext } from "../../APP";
 // import { Link } from "react-router-dom";
 import PostJob from "./PostJob";
+import PostedJob from "./PostedJob";
+import Admin from "../admin/Admin";
+
 const Profile = () => {
   const { loggedInUser } = useContext(userContext);
   const [singleUser, setSingleUser] = useState([]);
@@ -19,7 +22,7 @@ const Profile = () => {
     <div>
       <img src={photoURL} alt="" />
       <div>{name}</div>
-      {singleUser.length && (
+      {singleUser?.role === "employer" && (
         <div>
           <p>{singleUser[0].employerDetails.employerData.company_name}</p>
           <p>{singleUser[0].employerDetails.accountTypePrice[0]}</p>
@@ -28,9 +31,16 @@ const Profile = () => {
               email={email}
               company={singleUser[0].employerDetails.employerData.company_name}
             />
+            <PostedJob email={email} />
           </div>
         </div>
       )}
+
+      {singleUser?.role === "jobSeeker" && (
+        <div>here all applied job by this job seeker</div>
+      )}
+
+      {singleUser?.role === "admin" && <Admin />}
     </div>
   );
 };

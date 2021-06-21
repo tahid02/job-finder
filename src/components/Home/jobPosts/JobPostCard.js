@@ -1,8 +1,21 @@
-import React from "react";
-
-const JobPostCard = (props) => {
-  // console.log("props", props);
-  const { company, date_posted, email, position, experience_level } = props;
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { UserContext } from "../../../App";
+const JobPostCard = ({ post }) => {
+  const { loggedInUser } = useContext(UserContext);
+  const { company, experience_level, date_posted, email, position } = post;
+  const handleJobApply = () => {
+    axios
+      .post("http://localhost:5000/addToApplied", {
+        ...post,
+        jobSeekerEmail: loggedInUser.email,
+      })
+      .then((res) => {
+        console.log("employerInfoWithEmail", res);
+      })
+      .catch((error) => console.log("error employerInfoWithEmail", error));
+  };
   return (
     <div style={{ backgroundColor: "yellow", margin: "10px" }}>
       <p>{company}</p>
@@ -10,6 +23,9 @@ const JobPostCard = (props) => {
       <p>{date_posted}</p>
       <p>{email}</p>
       <p>{position}</p>
+      <Link to="/login">
+        <button onClick={() => handleJobApply()}>Apply</button>
+      </Link>
     </div>
   );
 };

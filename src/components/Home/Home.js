@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       this is home page
-      <Link to="/employer/postJob">
+      <Link to="/user/profile">
         <button className="btn-success">Post a job</button>
       </Link>
       <Link to="/admin/rentList" className="link">
